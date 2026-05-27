@@ -1683,24 +1683,128 @@
           </ul>
         </div>
 
-        <!-- Gym machine lists -->
-        <div class="section-label">Legs A Routine // Hypertrophy & Stability Focus</div>
-        <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
-        <div class="ex-row" id="ex-p1-la-1"><span class="ex-name">Leg Press</span><span class="ex-sets">4 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-la-2"><span class="ex-name">Hack Squat Machine</span><span class="ex-sets">4 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-la-3"><span class="ex-name">Single-Leg Press (Iso)</span><span class="ex-sets">3 × 12 reps/leg</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-la-4"><span class="ex-name">Leg Extension (Quads)</span><span class="ex-sets">4 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-la-5"><span class="ex-name">Hip Adductor Machine</span><span class="ex-sets">3 × 20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-la-6"><span class="ex-name">Seated Calf Raises</span><span class="ex-sets">4 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+        <!-- Gym Workout Routines -->
+        <div class="section-label">Detailed Gym Workouts // Daily Protocols</div>
 
-        <div class="section-label">Legs B Routine // Posterior Chain Focus</div>
-        <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
-        <div class="ex-row" id="ex-p1-lb-1"><span class="ex-name">Seated Leg Curl</span><span class="ex-sets">4 × 12–15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-lb-2"><span class="ex-name">Lying Leg Curl</span><span class="ex-sets">3 × 12–15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-lb-3"><span class="ex-name">Hip Thrust Machine</span><span class="ex-sets">4 × 12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-lb-4"><span class="ex-name">Leg Press (Feet High & Wide)</span><span class="ex-sets">3 × 15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-lb-5"><span class="ex-name">Abductor Machine</span><span class="ex-sets">3 × 20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
-        <div class="ex-row" id="ex-p1-lb-6"><span class="ex-name">Standing Calf Raises</span><span class="ex-sets">4 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+        <!-- MONDAY: PUSH -->
+        <div class="phase-card">
+          <div class="phase-head" onclick="toggleAccordion('p1-mon-workout','p1-mon-chev')">
+            <div class="phase-badge" style="background:var(--accent-blue-dim); color:var(--accent-blue); border:1px solid rgba(56,189,248,0.2);">M</div>
+            <div>
+              <div class="phase-title-text">Monday — Push Day</div>
+              <div class="phase-subtitle-text">Chest, Shoulders & Triceps Hypertrophy</div>
+            </div>
+            <svg id="p1-mon-chev" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div id="p1-mon-workout" class="phase-body">
+            <div class="phase-body-content">
+              <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
+              <div class="ex-row" id="ex-p1-push-1"><span class="ex-name">Barbell Bench Press</span><span class="ex-sets">1 warm-up, 2 × 6–8 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-push-2"><span class="ex-name">Incline Dumbbell Press</span><span class="ex-sets">1 warm-up, 2 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-push-3"><span class="ex-name">Machine Chest Press</span><span class="ex-sets">1 warm-up, 2 × 12–15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-push-4"><span class="ex-name">Seated Dumbbell Shoulder Press</span><span class="ex-sets">1 warm-up, 2 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-push-5"><span class="ex-name">Cable Lateral Raise</span><span class="ex-sets">1 warm-up, 2 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-push-6"><span class="ex-name">Tricep Rope Pushdown</span><span class="ex-sets">1 warm-up, 2 × 15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-push-7"><span class="ex-name">Pull-Ups (Before Leaving)</span><span class="ex-sets">3 × Failure (no warm-up)</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-push-7')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TUESDAY: PULL -->
+        <div class="phase-card">
+          <div class="phase-head" onclick="toggleAccordion('p1-tue-workout','p1-tue-chev')">
+            <div class="phase-badge" style="background:var(--accent-blue-dim); color:var(--accent-blue); border:1px solid rgba(56,189,248,0.2);">T</div>
+            <div>
+              <div class="phase-title-text">Tuesday — Pull Day</div>
+              <div class="phase-subtitle-text">Back, Biceps + 3km Aerobic Run</div>
+            </div>
+            <svg id="p1-tue-chev" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div id="p1-tue-workout" class="phase-body">
+            <div class="phase-body-content">
+              <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
+              <div class="ex-row" id="ex-p1-pull-1"><span class="ex-name">Weighted Pull-Ups</span><span class="ex-sets">1 warm-up, 2 × 6–8 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-pull-2"><span class="ex-name">Barbell Row</span><span class="ex-sets">1 warm-up, 2 × 8–10 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-pull-3"><span class="ex-name">Lat Pulldown</span><span class="ex-sets">1 warm-up, 2 × 12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-pull-4"><span class="ex-name">Seated Cable Row</span><span class="ex-sets">1 warm-up, 2 × 12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-pull-5"><span class="ex-name">Face Pull</span><span class="ex-sets">1 warm-up, 2 × 20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-pull-6"><span class="ex-name">Incline Dumbbell Curl</span><span class="ex-sets">1 warm-up, 2 × 12–15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-pull-7"><span class="ex-name">Zone 2 Easy Run</span><span class="ex-sets">3 km easy run (post-lifting)</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-pull-7')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEDNESDAY: LEGS A -->
+        <div class="phase-card">
+          <div class="phase-head" onclick="toggleAccordion('p1-wed-workout','p1-wed-chev')">
+            <div class="phase-badge" style="background:var(--accent-green-dim); color:var(--accent-green); border:1px solid rgba(0,255,157,0.2);">W</div>
+            <div>
+              <div class="phase-title-text">Wednesday — Legs A Day</div>
+              <div class="phase-subtitle-text">Quad Focus & Calves hypertrophy</div>
+            </div>
+            <svg id="p1-wed-chev" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div id="p1-wed-workout" class="phase-body">
+            <div class="phase-body-content">
+              <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
+              <div class="ex-row" id="ex-p1-la-1"><span class="ex-name">Leg Press</span><span class="ex-sets">1 warm-up, 2 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-la-2"><span class="ex-name">Hack Squat Machine</span><span class="ex-sets">1 warm-up, 2 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-la-3"><span class="ex-name">Single-Leg Press (Iso)</span><span class="ex-sets">1 warm-up, 2 × 12 reps/leg</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-la-4"><span class="ex-name">Leg Extension (Quads)</span><span class="ex-sets">1 warm-up, 2 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-la-5"><span class="ex-name">Hip Adductor Machine</span><span class="ex-sets">1 warm-up, 2 × 20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-la-6"><span class="ex-name">Seated Calf Raise</span><span class="ex-sets">1 warm-up, 2 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-la-7"><span class="ex-name">Pull-Ups (Before Leaving)</span><span class="ex-sets">3 × Failure (no warm-up)</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-la-7')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THURSDAY: UPPER -->
+        <div class="phase-card">
+          <div class="phase-head" onclick="toggleAccordion('p1-thu-workout','p1-thu-chev')">
+            <div class="phase-badge" style="background:var(--accent-blue-dim); color:var(--accent-blue); border:1px solid rgba(56,189,248,0.2);">T</div>
+            <div>
+              <div class="phase-title-text">Thursday — Upper Day</div>
+              <div class="phase-subtitle-text">Chest, Shoulders & Back Maintenance + 3km Run</div>
+            </div>
+            <svg id="p1-thu-chev" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div id="p1-thu-workout" class="phase-body">
+            <div class="phase-body-content">
+              <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
+              <div class="ex-row" id="ex-p1-upper-1"><span class="ex-name">Machine Chest Press</span><span class="ex-sets">1 warm-up, 2 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-upper-2"><span class="ex-name">Machine Shoulder Press</span><span class="ex-sets">1 warm-up, 2 × 10–12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-upper-3"><span class="ex-name">Cable Fly</span><span class="ex-sets">1 warm-up, 2 × 15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-upper-4"><span class="ex-name">Lat Pulldown (Close Grip)</span><span class="ex-sets">1 warm-up, 2 × 12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-upper-5"><span class="ex-name">Chest Supported Row</span><span class="ex-sets">1 warm-up, 2 × 12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-upper-6"><span class="ex-name">Cable Curl</span><span class="ex-sets">1 warm-up, 2 × 15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-upper-7"><span class="ex-name">Zone 2 Easy Run</span><span class="ex-sets">3 km easy run (post-lifting)</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-upper-7')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRIDAY: LEGS B -->
+        <div class="phase-card" style="margin-bottom: 24px;">
+          <div class="phase-head" onclick="toggleAccordion('p1-fri-workout','p1-fri-chev')">
+            <div class="phase-badge" style="background:var(--accent-green-dim); color:var(--accent-green); border:1px solid rgba(0,255,157,0.2);">F</div>
+            <div>
+              <div class="phase-title-text">Friday — Legs B Day</div>
+              <div class="phase-subtitle-text">Posterior Chain Focus & Stability</div>
+            </div>
+            <svg id="p1-fri-chev" class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div id="p1-fri-workout" class="phase-body">
+            <div class="phase-body-content">
+              <div class="ex-head"><span>Exercise Name</span><span>Sets & Target Reps</span><span>Done</span></div>
+              <div class="ex-row" id="ex-p1-lb-1"><span class="ex-name">Seated Leg Curl</span><span class="ex-sets">1 warm-up, 2 × 12–15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-1')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-lb-2"><span class="ex-name">Lying Leg Curl</span><span class="ex-sets">1 warm-up, 2 × 12–15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-2')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-lb-3"><span class="ex-name">Hip Thrust Machine</span><span class="ex-sets">1 warm-up, 2 × 12 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-3')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-lb-4"><span class="ex-name">Leg Press (Feet High & Wide)</span><span class="ex-sets">1 warm-up, 2 × 15 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-4')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-lb-5"><span class="ex-name">Abductor Machine</span><span class="ex-sets">1 warm-up, 2 × 20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-5')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-lb-6"><span class="ex-name">Standing Calf Raise</span><span class="ex-sets">1 warm-up, 2 × 15–20 reps</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-6')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+              <div class="ex-row" id="ex-p1-lb-7"><span class="ex-name">Pull-Ups (Before Leaving)</span><span class="ex-sets">3 × Failure (no warm-up)</span><label class="checkbox-container"><input type="checkbox" onclick="completeExercise('p1-lb-7')"><span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- ================= PHASE 2 PAGE ================= -->
