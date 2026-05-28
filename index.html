@@ -1395,6 +1395,110 @@
         gap: 4px;
       }
     }
+
+    /* --- PROFILE & USER SWITCH STYLES --- */
+    .btn-profile-switch {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10;
+    }
+
+    .btn-profile-switch:hover {
+      background: var(--accent-green-dim);
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      box-shadow: var(--glow-green);
+    }
+
+    .btn-profile-switch svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .profile-select-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .profile-select-row:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .profile-select-row.active {
+      background: var(--accent-green-dim);
+      border-color: rgba(0, 255, 157, 0.25);
+      box-shadow: var(--glow-green);
+    }
+
+    .profile-select-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .profile-select-row.active .profile-select-name {
+      color: var(--accent-green);
+    }
+
+    .profile-select-details {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .active-badge {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--accent-green);
+      background: rgba(0, 255, 157, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 255, 157, 0.2);
+      letter-spacing: 0.05em;
+    }
+
+    .btn-delete-profile {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-delete-profile:hover {
+      color: var(--accent-red);
+      background: var(--accent-red-dim);
+    }
   </style>
 </head>
 
@@ -1419,12 +1523,21 @@
         </div>
       </div>
 
-      <button class="btn-action" onclick="openLogModal()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-        <span>Log</span>
-      </button>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-action" onclick="openProfileModal()" style="border-color: rgba(56, 189, 248, 0.25); background: var(--accent-blue-dim); color: var(--accent-blue);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span id="mobile-profile-btn-text">Sakr</span>
+        </button>
+        <button class="btn-action" onclick="openLogModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <span>Log</span>
+        </button>
+      </div>
     </div>
 
     <!-- DESKTOP SIDEBAR -->
@@ -1446,9 +1559,17 @@
 
       <!-- Interactive profile stats in sidebar -->
       <div class="profile-card">
-        <div class="profile-name">Operator // Age 20</div>
+        <button class="btn-profile-switch" onclick="openProfileModal()" title="Switch operator profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </button>
+        <div class="profile-name" id="sidebar-profile-name">Operator // Age 20</div>
         <div class="profile-meta">
-          <span>TARGET: 88.0 kg</span>
+          <span id="sidebar-target-weight">TARGET: 88.0 kg</span>
           <span id="sidebar-weight">CURR: 102.1 kg</span>
         </div>
         <div class="progress-widget">
@@ -1574,7 +1695,7 @@
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <div class="stat-num">88.0 kg</div>
+              <div class="stat-num" id="stat-target-weight">88.0 kg</div>
               <div class="stat-delta delta-neutral">Target weight</div>
             </div>
 
@@ -1633,7 +1754,7 @@
                         <polyline points="20 6 9 17 4 12" />
                       </svg></span>
                   </label>
-                  <div class="m-title">Weight target: Reach 94.0 - 95.0 kg</div>
+                  <div class="m-title" id="milestone-p1-target-desc">Weight target: Reach 94.0 - 95.0 kg</div>
                   <div class="tag t-g">Body</div>
                 </div>
 
@@ -1714,7 +1835,7 @@
                         <polyline points="20 6 9 17 4 12" />
                       </svg></span>
                   </label>
-                  <div class="m-title">Weight target: Reach 90.0 - 91.0 kg</div>
+                  <div class="m-title" id="milestone-p2-target-desc">Weight target: Reach 90.0 - 91.0 kg</div>
                   <div class="tag t-g">Body</div>
                 </div>
 
@@ -1796,7 +1917,7 @@
                         <polyline points="20 6 9 17 4 12" />
                       </svg></span>
                   </label>
-                  <div class="m-title">Weight target: Reach 87.0 - 90.0 kg</div>
+                  <div class="m-title" id="milestone-p3-target-desc">Weight target: Reach 87.0 - 90.0 kg</div>
                   <div class="tag t-g">Body</div>
                 </div>
 
@@ -1986,7 +2107,7 @@
             </div>
           </div>
 
-          <div class="section-label">Running in Phase 1 (Under 94 kg Rules)</div>
+          <div class="section-label">Running in Phase 1 (Under <span id="nn-running-phase-threshold">94</span> kg Rules)</div>
           <div class="card">
             <ul
               style="list-style: none; display:flex; flex-direction:column; gap:16px; font-size:14px; color:var(--text-secondary);">
@@ -1995,7 +2116,7 @@
                 Conversational (Zone 2). You must be able to speak full sentences comfortably.</li>
               <li><strong
                   style="color:var(--text-primary); font-family:var(--font-mono); font-size:12px; display:inline-block; width:120px;">SURFACE:</strong>
-                Treadmill or flat grass fields only. At 102 kg, hard asphalt running will destroy joint integrity.</li>
+                Treadmill or flat grass fields only. At <span id="nn-running-weight-value">102</span> kg, hard asphalt running will destroy joint integrity.</li>
               <li><strong
                   style="color:var(--text-primary); font-family:var(--font-mono); font-size:12px; display:inline-block; width:120px;">PROGRESSION:</strong>
                 Weeks 1–4: 2 km per run // Weeks 5–8: 3 km per run // Weeks 9–16: 4–5 km per run.</li>
@@ -2899,7 +3020,7 @@
                 <span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg></span>
-                <span>✔ Protein bar daily on heavy training intervals</span>
+                <span>✔ Protein bar consumed daily on heavy training intervals</span>
               </label>
               <label class="checkbox-container" style="gap:12px; font-size:14px; color:var(--text-secondary);">
                 <input type="checkbox" id="nn-2" onclick="toggleNonNegotiable(2)">
@@ -2958,7 +3079,7 @@
                 <div class="legend-item"><span class="legend-color"
                     style="background:var(--accent-green)"></span><span>Actual weight</span></div>
                 <div class="legend-item"><span class="legend-color"
-                    style="border: 1px dashed var(--accent-red)"></span><span>M12 Target (88 kg)</span></div>
+                    style="border: 1px dashed var(--accent-red)"></span><span id="chart-legend-target-text">Target (88.0 kg)</span></div>
               </div>
             </div>
 
@@ -3094,6 +3215,66 @@
     </div>
   </div>
 
+  <!-- PROFILE MANAGEMENT MODAL -->
+  <div class="modal-overlay" id="profile-modal">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <div class="modal-title">OPERATOR PROFILES</div>
+        <button class="btn-close" onclick="closeProfileModal()">
+          <svg style="width:24px; height:24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- List of Active Profiles -->
+      <div class="form-group">
+        <label class="form-label" style="color: var(--accent-green); letter-spacing: 0.05em;">ACTIVE OPERATORS</label>
+        <div id="profiles-list-container" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+          <!-- JS generated profile list -->
+        </div>
+      </div>
+      
+      <hr style="border: none; border-top: 1px solid var(--border); margin: 20px 0;">
+      
+      <!-- Create New Operator Profile Form -->
+      <div style="font-family: var(--font-display); font-size: 16px; font-weight: 800; text-transform: uppercase; color: var(--text-primary); margin-bottom: 12px; letter-spacing: 0.05em;">
+        ADD NEW OPERATOR
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Operator Codename</label>
+        <input type="text" id="new-profile-username" class="form-input" placeholder="e.g. sakr" maxlength="15">
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label class="form-label">Age</label>
+          <input type="number" id="new-profile-age" class="form-input" placeholder="e.g. 20">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Current Weight (kg)</label>
+          <input type="number" step="0.1" id="new-profile-weight" class="form-input" placeholder="e.g. 102.1">
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label class="form-label">Target Weight (kg)</label>
+          <input type="number" step="0.1" id="new-profile-target-weight" class="form-input" placeholder="e.g. 88.0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Current Body Fat (%)</label>
+          <input type="number" step="0.1" id="new-profile-bf" class="form-input" placeholder="e.g. 28.6">
+        </div>
+      </div>
+      
+      <button class="btn-submit" onclick="submitCreateProfile()">INITIALIZE NEW OPERATOR</button>
+    </div>
+  </div>
+
   <script>
     /* --- STATE CONFIGURATION & DATA STORAGE --- */
     const defaultLogs = [
@@ -3113,33 +3294,90 @@
       { name: "Macro-compliant Protein Bar", kcal: 220, isCustom: false }
     ];
 
-    // Local storage cache layers
-    let state = {
-      weightLogs: JSON.parse(localStorage.getItem('OP_weightLogs')) || defaultLogs,
-      checkedMilestones: JSON.parse(localStorage.getItem('OP_checkedMilestones')) || [],
-      completedExercises: JSON.parse(localStorage.getItem('OP_completedExercises')) || [],
-      mealsList: JSON.parse(localStorage.getItem('OP_mealsList')) || defaultMeals,
-      checkedMeals: JSON.parse(localStorage.getItem('OP_checkedMeals')) || [0, 1, 2, 3, 4, 5], // default checked
-      checkedNonNegotiables: JSON.parse(localStorage.getItem('OP_checkedNonNegotiables')) || [],
-      completedStandards: JSON.parse(localStorage.getItem('OP_completedStandards')) || []
-    };
+    // Global profile state variables
+    let profilesList = JSON.parse(localStorage.getItem('OP_profilesList')) || [
+      { username: 'sakr', age: 20, startWeight: 102.1, startBf: 28.6, targetWeight: 88.0, targetBf: 14.0 }
+    ];
+    let currentUser = localStorage.getItem('OP_currentUser') || 'sakr';
+
+    // Migrate any existing old-style single-user data to sakr
+    function migrateExistingDataToSakr() {
+      const oldWeightLogs = localStorage.getItem('OP_weightLogs');
+      if (oldWeightLogs && !localStorage.getItem('OP_state_sakr')) {
+        const oldState = {
+          weightLogs: JSON.parse(localStorage.getItem('OP_weightLogs')) || defaultLogs,
+          checkedMilestones: JSON.parse(localStorage.getItem('OP_checkedMilestones')) || [],
+          completedExercises: JSON.parse(localStorage.getItem('OP_completedExercises')) || [],
+          mealsList: JSON.parse(localStorage.getItem('OP_mealsList')) || defaultMeals,
+          checkedMeals: JSON.parse(localStorage.getItem('OP_checkedMeals')) || [0, 1, 2, 3, 4, 5],
+          checkedNonNegotiables: JSON.parse(localStorage.getItem('OP_checkedNonNegotiables')) || [],
+          completedStandards: JSON.parse(localStorage.getItem('OP_completedStandards')) || []
+        };
+        localStorage.setItem('OP_state_sakr', JSON.stringify(oldState));
+      }
+    }
+    migrateExistingDataToSakr();
+
+    // Load active operator state
+    let state = {};
+
+    function loadActiveOperatorState() {
+      // Find current user profile
+      let profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase());
+      if (!profile) {
+        // Fallback to sakr
+        currentUser = 'sakr';
+        profile = profilesList[0];
+      }
+
+      // Check if state exists for this operator, else initialize
+      const savedState = localStorage.getItem(`OP_state_${currentUser.toLowerCase()}`);
+      if (savedState) {
+        state = JSON.parse(savedState);
+      } else {
+        // First time initialization for this user profile
+        state = {
+          weightLogs: [
+            { date: new Date().toISOString().split('T')[0], weight: profile.startWeight, bf: profile.startBf }
+          ],
+          checkedMilestones: [],
+          completedExercises: [],
+          mealsList: [...defaultMeals],
+          checkedMeals: [0, 1, 2, 3, 4, 5],
+          checkedNonNegotiables: [],
+          completedStandards: []
+        };
+        
+        // Special case: for 'sakr', populate with standard preloaded history if they have none
+        if (currentUser.toLowerCase() === 'sakr') {
+          state.weightLogs = [...defaultLogs];
+        }
+        
+        syncStateToStorage();
+      }
+    }
 
     function syncStateToStorage() {
-      localStorage.setItem('OP_weightLogs', JSON.stringify(state.weightLogs));
-      localStorage.setItem('OP_checkedMilestones', JSON.stringify(state.checkedMilestones));
-      localStorage.setItem('OP_completedExercises', JSON.stringify(state.completedExercises));
-      localStorage.setItem('OP_mealsList', JSON.stringify(state.mealsList));
-      localStorage.setItem('OP_checkedMeals', JSON.stringify(state.checkedMeals));
-      localStorage.setItem('OP_checkedNonNegotiables', JSON.stringify(state.checkedNonNegotiables));
-      localStorage.setItem('OP_completedStandards', JSON.stringify(state.completedStandards));
+      localStorage.setItem(`OP_state_${currentUser.toLowerCase()}`, JSON.stringify(state));
+      localStorage.setItem('OP_profilesList', JSON.stringify(profilesList));
+      localStorage.setItem('OP_currentUser', currentUser);
     }
 
     /* --- APP INITIALIZATION --- */
     window.addEventListener('DOMContentLoaded', () => {
+      // Migrate old data
+      migrateExistingDataToSakr();
+      
+      // Load current user profile data
+      loadActiveOperatorState();
+
       // Set current date in inputs by default
       const today = new Date().toISOString().split('T')[0];
       document.getElementById('log-input-date').value = today;
       document.getElementById('modal-input-date').value = today;
+
+      // Update UI elements from profile
+      updateProfileUI();
 
       // Render components
       renderWeightData();
@@ -3150,6 +3388,213 @@
       renderStandards();
       updateGlobalProgress();
     });
+
+    /* --- PROFILE & SWITCH OPERATOR CONTROLLER --- */
+    function openProfileModal() {
+      renderProfilesList();
+      document.getElementById('profile-modal').classList.add('open');
+    }
+    
+    function closeProfileModal() {
+      document.getElementById('profile-modal').classList.remove('open');
+    }
+
+    function renderProfilesList() {
+      const container = document.getElementById('profiles-list-container');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      profilesList.forEach((profile) => {
+        const isActive = profile.username.toLowerCase() === currentUser.toLowerCase();
+        
+        const row = document.createElement('div');
+        row.className = `profile-select-row ${isActive ? 'active' : ''}`;
+        
+        // Clicking row switches profile, unless they click delete
+        row.setAttribute('onclick', `switchProfile('${profile.username}')`);
+        
+        row.innerHTML = `
+          <div style="display: flex; flex-direction: column; text-align: left;">
+            <span class="profile-select-name">${profile.username}</span>
+            <span class="profile-select-details">Age ${profile.age} // Start: ${profile.startWeight.toFixed(1)} kg → Target: ${profile.targetWeight.toFixed(1)} kg</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            ${isActive ? '<span class="active-badge">ACTIVE</span>' : `
+              <button class="btn-delete-profile" onclick="deleteProfile('${profile.username}', event)" title="Delete operator profile">
+                <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            `}
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function switchProfile(username) {
+      currentUser = username;
+      loadActiveOperatorState();
+      syncStateToStorage();
+      
+      // Update the page views
+      updateProfileUI();
+      renderWeightData();
+      renderMilestones();
+      renderExercises();
+      renderMeals();
+      renderNonNegotiables();
+      renderStandards();
+      updateGlobalProgress();
+      
+      // Close modal
+      closeProfileModal();
+      
+      // Navigate to overview by default when switching profiles
+      navigateTo('overview');
+    }
+
+    function deleteProfile(username, event) {
+      // Prevent switching profile when clicking delete
+      event.stopPropagation();
+      
+      if (username.toLowerCase() === currentUser.toLowerCase()) {
+        alert("Cannot delete the active operator profile.");
+        return;
+      }
+      
+      if (confirm(`Are you sure you want to delete operator profile "${username}"? All their telemetry and checklists will be permanently erased.`)) {
+        // Remove from list
+        profilesList = profilesList.filter(p => p.username.toLowerCase() !== username.toLowerCase());
+        
+        // Delete state
+        localStorage.removeItem(`OP_state_${username.toLowerCase()}`);
+        
+        syncStateToStorage();
+        renderProfilesList();
+      }
+    }
+
+    function submitCreateProfile() {
+      const usernameInput = document.getElementById('new-profile-username').value.trim();
+      const ageInput = parseInt(document.getElementById('new-profile-age').value);
+      const weightInput = parseFloat(document.getElementById('new-profile-weight').value);
+      const targetWeightInput = parseFloat(document.getElementById('new-profile-target-weight').value);
+      const bfInput = parseFloat(document.getElementById('new-profile-bf').value);
+      
+      if (!usernameInput) {
+        alert("Please specify a codename for the new operator.");
+        return;
+      }
+      
+      // Check for duplicate username
+      if (profilesList.some(p => p.username.toLowerCase() === usernameInput.toLowerCase())) {
+        alert("An operator with that codename already exists.");
+        return;
+      }
+      
+      if (isNaN(ageInput) || ageInput <= 0) {
+        alert("Please enter a valid age.");
+        return;
+      }
+      if (isNaN(weightInput) || weightInput <= 0) {
+        alert("Please enter a valid starting weight.");
+        return;
+      }
+      if (isNaN(targetWeightInput) || targetWeightInput <= 0) {
+        alert("Please enter a valid target weight.");
+        return;
+      }
+      if (isNaN(bfInput) || bfInput <= 0) {
+        alert("Please enter a valid current body fat percentage.");
+        return;
+      }
+      
+      // Create new profile object
+      const newProfile = {
+        username: usernameInput,
+        age: ageInput,
+        startWeight: weightInput,
+        startBf: bfInput,
+        targetWeight: targetWeightInput,
+        targetBf: 14.0 // Standard default target body fat
+      };
+      
+      // Add to profile list
+      profilesList.push(newProfile);
+      
+      // Save profile list
+      syncStateToStorage();
+      
+      // Reset inputs
+      document.getElementById('new-profile-username').value = '';
+      document.getElementById('new-profile-age').value = '';
+      document.getElementById('new-profile-weight').value = '';
+      document.getElementById('new-profile-target-weight').value = '';
+      document.getElementById('new-profile-bf').value = '';
+      
+      // Switch to the newly created profile
+      switchProfile(usernameInput);
+    }
+
+    function updateProfileUI() {
+      let profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase());
+      if (!profile) return;
+
+      // Sidebar Profile Card Update
+      document.getElementById('sidebar-profile-name').innerText = `${profile.username} // Age ${profile.age}`;
+      document.getElementById('sidebar-target-weight').innerText = `TARGET: ${profile.targetWeight.toFixed(1)} kg`;
+      
+      // Mobile header button text
+      const mobileBtnText = document.getElementById('mobile-profile-btn-text');
+      if (mobileBtnText) {
+        mobileBtnText.innerText = profile.username.charAt(0).toUpperCase() + profile.username.slice(1);
+      }
+
+      // Overview page Target card
+      const targetWeightEl = document.getElementById('stat-target-weight');
+      if (targetWeightEl) {
+        targetWeightEl.innerText = `${profile.targetWeight.toFixed(1)} kg`;
+      }
+      
+      // Dynamic legend inside the weight telemetry chart
+      const legendTextEl = document.getElementById('chart-legend-target-text');
+      if (legendTextEl) {
+        legendTextEl.innerText = `Target (${profile.targetWeight.toFixed(1)} kg)`;
+      }
+
+      // Make milestone descriptions match the user's computed milestones!
+      const p1Target = profile.startWeight - (profile.startWeight - profile.targetWeight) * 0.5;
+      const p2Target = profile.startWeight - (profile.startWeight - profile.targetWeight) * 0.85;
+      const p3Target = profile.targetWeight;
+      
+      const p1Desc = document.getElementById('milestone-p1-target-desc');
+      if (p1Desc) {
+        p1Desc.innerHTML = `Weight target: Reach <strong>${p1Target.toFixed(1)} kg</strong> (50% of total loss goal)`;
+      }
+      const p2Desc = document.getElementById('milestone-p2-target-desc');
+      if (p2Desc) {
+        p2Desc.innerHTML = `Weight target: Reach <strong>${p2Target.toFixed(1)} kg</strong> (85% of total loss goal)`;
+      }
+      const p3Desc = document.getElementById('milestone-p3-target-desc');
+      if (p3Desc) {
+        p3Desc.innerHTML = `Weight target: Reach <strong>${p3Target.toFixed(1)} kg</strong> (100% of target weight)`;
+      }
+
+      // Update Phase 1 Under XX kg Rules
+      const rulePhase1Threshold = document.getElementById('nn-running-phase-threshold');
+      if (rulePhase1Threshold) {
+        rulePhase1Threshold.innerText = p1Target.toFixed(0);
+      }
+      
+      // Update Phase 1 Under running weight joint integrity warn
+      const ruleWeightVal = document.getElementById('nn-running-weight-value');
+      if (ruleWeightVal) {
+        ruleWeightVal.innerText = profile.startWeight.toFixed(0);
+      }
+    }
 
     /* --- NAVIGATION CONTROLLER --- */
     function navigateTo(pageId, triggerBtn) {
@@ -3228,19 +3673,21 @@
       // Sort logs chronologically
       state.weightLogs.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+      const profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase()) || profilesList[0];
+
       // Get current weight parameters
       const latestLog = state.weightLogs[state.weightLogs.length - 1];
-      const currentWeight = latestLog ? latestLog.weight : 102.1;
-      const currentBF = latestLog ? latestLog.bf : 28.6;
+      const currentWeight = latestLog ? latestLog.weight : profile.startWeight;
+      const currentBF = latestLog ? latestLog.bf : profile.startBf;
 
       // Update global dashboard text blocks
       document.getElementById('stat-curr-weight').innerText = `${currentWeight.toFixed(1)} kg`;
       document.getElementById('stat-curr-bf').innerText = `${currentBF.toFixed(1)}%`;
       document.getElementById('sidebar-weight').innerText = `CURR: ${currentWeight.toFixed(1)} kg`;
 
-      // Deltas relative to starting points (102.1 kg, 28.6% BF)
-      const weightDelta = currentWeight - 102.1;
-      const bfDelta = currentBF - 28.6;
+      // Deltas relative to starting points
+      const weightDelta = currentWeight - profile.startWeight;
+      const bfDelta = currentBF - profile.startBf;
 
       const wDeltaEl = document.getElementById('stat-weight-delta');
       wDeltaEl.innerText = `${weightDelta >= 0 ? '+' : ''}${weightDelta.toFixed(1)} kg`;
@@ -3251,9 +3698,9 @@
       bDeltaEl.className = `stat-delta ${bfDelta <= 0 ? 'delta-down' : 'delta-neutral'}`;
 
       // Update dynamic meters in Standards Page
-      document.getElementById('label-bf-progress').innerText = `${currentBF.toFixed(1)}% / 14%`;
-      // Map bf progress bar (starting at 28.6% as 0%, moving down to 14% as 100%)
-      let bfPct = ((28.6 - currentBF) / (28.6 - 14.0)) * 100;
+      document.getElementById('label-bf-progress').innerText = `${currentBF.toFixed(1)}% / ${profile.targetBf.toFixed(1)}%`;
+      // Map bf progress bar (starting at profile.startBf as 0%, moving down to targetBf as 100%)
+      let bfPct = ((profile.startBf - currentBF) / (profile.startBf - profile.targetBf)) * 100;
       bfPct = Math.max(0, Math.min(100, bfPct));
       document.getElementById('bar-bf-progress').style.width = `${bfPct}%`;
 
@@ -3355,10 +3802,12 @@
       const chartWidth = width - paddingLeft - paddingRight;
       const chartHeight = height - paddingTop - paddingBottom;
 
+      const profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase()) || profilesList[0];
+
       // Bounds calculations
       const weights = logs.map(l => l.weight);
-      let minW = 85; // slightly under target weight
-      let maxW = 104; // slightly over initial weight
+      let minW = profile.targetWeight - 3; // slightly under target weight
+      let maxW = profile.startWeight + 2; // slightly over initial weight
 
       // Dynamic boundary adjustments
       const currentMin = Math.min(...weights);
@@ -3410,8 +3859,8 @@
         svg.appendChild(text);
       }
 
-      // 2. Draw Target Weight Line (88.0 kg)
-      const targetY = getY(88.0);
+      // 2. Draw Target Weight Line
+      const targetY = getY(profile.targetWeight);
       const targetLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       targetLine.setAttribute('x1', paddingLeft);
       targetLine.setAttribute('y1', targetY);
@@ -3431,7 +3880,7 @@
       targetLabel.setAttribute('font-family', 'var(--font-mono)');
       targetLabel.setAttribute('font-size', '8');
       targetLabel.setAttribute('text-anchor', 'end');
-      targetLabel.textContent = `TARGET: 88.0 kg`;
+      targetLabel.textContent = `TARGET: ${profile.targetWeight.toFixed(1)} kg`;
       svg.appendChild(targetLabel);
 
       // 3. Draw Weight Line & Shadow fill
@@ -3449,7 +3898,7 @@
 
       // Render background gradient area
       const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-      gradient.setAttribute('id', 'chart-area-grad-idx');
+      gradient.setAttribute('id', 'chart-area-grad');
       gradient.setAttribute('x1', '0');
       gradient.setAttribute('y1', '0');
       gradient.setAttribute('x2', '0');
@@ -3462,7 +3911,7 @@
 
       const fillArea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       fillArea.setAttribute('d', areaPoints);
-      fillArea.setAttribute('fill', 'url(#chart-area-grad-idx)');
+      fillArea.setAttribute('fill', 'url(#chart-area-grad)');
       svg.appendChild(fillArea);
 
       // Render primary glowing trend path line
@@ -3680,14 +4129,17 @@
         }
       }
 
+      const profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase()) || profilesList[0];
+
       // Estimate Pull-Up target meter bar linked to logs or checked standard
       const latestLog = state.weightLogs[state.weightLogs.length - 1];
-      let loggedWeight = latestLog ? latestLog.weight : 102.1;
+      let loggedWeight = latestLog ? latestLog.weight : profile.startWeight;
 
       // Interpolate progress reps dynamically based on current weight drop!
-      // At 102.1 kg, user estimated max reps ~8.
-      // At 88 kg target, pullups should reach 20 reps.
-      let weightLostPct = (102.1 - loggedWeight) / (102.1 - 88.0);
+      // At starting weight, user estimated max reps ~8.
+      // At target weight target, pullups should reach 20 reps.
+      const weightDiff = profile.startWeight - profile.targetWeight;
+      let weightLostPct = weightDiff > 0 ? ((profile.startWeight - loggedWeight) / weightDiff) : 0;
       weightLostPct = Math.max(0, Math.min(1, weightLostPct));
       let calculatedPullups = Math.round(8 + weightLostPct * 12);
 
@@ -3787,17 +4239,26 @@
         }
       });
 
+      const profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase()) || profilesList[0];
+
       // Determine target based on roadmap phases
       const latestLog = state.weightLogs[state.weightLogs.length - 1];
-      const weight = latestLog ? latestLog.weight : 102.1;
+      const weight = latestLog ? latestLog.weight : profile.startWeight;
 
       let targetKcal = 2400; // Phase 1 default
       let phaseLabel = "Phase 1";
 
-      if (weight < 90) {
+      // Dynamically calculate thresholds:
+      // Phase 2 threshold: startWeight - 50% of the target loss
+      // Phase 3 threshold: startWeight - 85% of the target loss
+      const totalLossGoal = profile.startWeight - profile.targetWeight;
+      const phase2Threshold = profile.startWeight - (totalLossGoal * 0.5);
+      const phase3Threshold = profile.startWeight - (totalLossGoal * 0.85);
+
+      if (weight < phase3Threshold) {
         targetKcal = 2900; // Phase 3
         phaseLabel = "Phase 3 (Peak)";
-      } else if (weight < 95) {
+      } else if (weight < phase2Threshold) {
         targetKcal = 2550; // Phase 2
         phaseLabel = "Phase 2 (Transition)";
       }
@@ -3848,19 +4309,21 @@
       // - Milestones (16 total items)
       // - Standards (7 total items)
       // - Non-negotiables (6 total items)
-      // - Weight logged relative to target goal weight drop (14.1 kg target total)
+      // - Weight logged relative to target goal weight drop (from startWeight to targetWeight)
 
       const milestoneDone = state.checkedMilestones.length;
       const standardsDone = state.completedStandards.length;
       const nonNegotiableDone = state.checkedNonNegotiables.length;
 
+      const profile = profilesList.find(p => p.username.toLowerCase() === currentUser.toLowerCase()) || profilesList[0];
       const latestLog = state.weightLogs[state.weightLogs.length - 1];
-      const loggedWeight = latestLog ? latestLog.weight : 102.1;
+      const loggedWeight = latestLog ? latestLog.weight : profile.startWeight;
 
-      // Weight target progress mapping (from 102.1 kg initial to 88 kg target)
-      let weightLostVal = 102.1 - loggedWeight;
-      weightLostVal = Math.max(0, Math.min(14.1, weightLostVal));
-      const weightLostPct = weightLostVal / 14.1; // 0 to 1
+      // Weight target progress mapping
+      let weightLostVal = profile.startWeight - loggedWeight;
+      const totalLossGoal = profile.startWeight - profile.targetWeight;
+      weightLostVal = Math.max(0, Math.min(totalLossGoal, weightLostVal));
+      const weightLostPct = totalLossGoal > 0 ? (weightLostVal / totalLossGoal) : 0; // 0 to 1
 
       // Scale components
       const totalChecklistItemsDone = milestoneDone + standardsDone + nonNegotiableDone;
